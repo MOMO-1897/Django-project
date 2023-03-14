@@ -6,10 +6,12 @@ def home(request):
     views['feedbacks']=feedback.objects.all()
     views['services']=Service.objects.all
 
-    return render(request, 'index.html')
+    return render(request, 'index.html',views)
 def contact(request):
+    views={}
+    views['informations']=Information.objects.all
 
-    return render(request, 'contact.html')
+    return render(request, 'contact.html',views)
 def elements(request):
 
     return render(request, 'elements.html')
