@@ -1,7 +1,10 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 def home(request):
+    views={}
+    views['feedbacks']=feedback.objects.all()
+    views['services']=Service.objects.all
 
     return render(request, 'index.html')
 def contact(request):
