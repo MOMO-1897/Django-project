@@ -10,6 +10,20 @@ def home(request):
 def contact(request):
     views={}
     views['informations']=Information.objects.all
+    if request.method =='POST':
+        name=request.POST['name']
+        email=request.POST['email']
+        subject=request.POST['subject']
+        message=request.POST['message']
+        data=Contact.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+        data.save()
+        views['messages']="Success!"
+        return render(request, 'contact.html',views)
 
     return render(request, 'contact.html',views)
 def elements(request):
